@@ -1,0 +1,40 @@
+.imgTextWrapper {
+    position: relative;
+    width: 100%; 
+    background-color: green; 
+}
+
+.imgTextWrapper .summonerName{
+    display: inline-block;
+    background-color: yellowgreen;
+    position: absolute;
+    left: 9%;
+    top: 5%;
+}
+
+.imgWrapper {
+
+}
+
+.textOnImage {
+    position: absolute;
+    border-radius: 15px;
+    bottom: -3.5%;
+    background-color: #313a35;
+    color: white;
+    width: 3%;
+    text-align: center;
+    padding-inline: 10px;
+    margin: 0 auto;
+    left: 21px;
+} 
+
+.imageStyle {
+    width: 8%;
+    height: 50%;
+    border-radius: 15%;
+    text-align: center;
+}
+
+
+

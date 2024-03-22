@@ -1,0 +1,7 @@
+.summoner {
+    background-color: grey;
+}
+.summoner .summonerName {
+    display: inline-block;
+}
+
