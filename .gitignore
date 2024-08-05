@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .png
+/public/ProfileIcon
 
 # testing
 /coverage
