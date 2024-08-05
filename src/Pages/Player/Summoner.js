@@ -10,7 +10,6 @@ export default function Summoner() {
   return (
     <div className={styles.summoner}> 
       <ProfileIcon summonerName={summonerName} /> 
-      <button onClick={() => navigate(-1)}>Go Back</button>
     </div>
   );
 }

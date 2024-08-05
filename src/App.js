@@ -16,15 +16,19 @@ import CareerDetail, { CareerDetailsLoader } from "./Pages/Careers/CareerDetail"
 import CareersError from "./Pages/Careers/CareersError";
 import Summoner, { summonerLoader } from "./Pages/Player/Summoner";
 import TestComponent from "./Pages/Error/TestComponent";
+import LoginForm from "./Pages/Login/LoginForm/LoginForm";
+
 
 // layouts
 import RootLayout from "./Layouts/RootLayout";
 import HelpLayoyt from "./Layouts/HelpLayout";
 import CareersLayout from "./Layouts/CareersLayout";
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
+    <>
+    <Route  path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
 
@@ -54,11 +58,14 @@ const router = createBrowserRouter(
 
       <Route path="*" element={<NotFound />} />
     </Route>
+    
+    </>
   )
 );
 
 function App() {
-  return  <RouterProvider router={router} />
+  //return  <RouterProvider router={router} />
+  return <LoginForm />
 }
 
 export default App;

@@ -6,10 +6,10 @@ export default function Home() {
   return (
     <div className="home">
       <div className={styles.logo}>
-        <Logo />
+      <Logo />
       </div>
       
-        <Form />
+      <Form />
     </div>
   );
 }

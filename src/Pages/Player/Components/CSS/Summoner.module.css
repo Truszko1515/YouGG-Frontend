@@ -1,7 +1,6 @@
 .summoner {
     background-color: grey;
+    margin: 0;
 }
-.summoner .summonerName {
-    display: inline-block;
-}
+
 
