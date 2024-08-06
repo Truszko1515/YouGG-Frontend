@@ -14,26 +14,48 @@ export default function Form() {
   };
 
   return (
-    <>
-      <form className={styles.Searchform} onSubmit={handleSubmit}>
-        <div className={styles.inputContainer}>
-          <input
-            className={styles.modernInput}
-            onChange={(e) => setsummonerName(e.target.value)}
-            value={summonerName}
-            type="text"
-            placeholder="Enter summoner name..."
-          />
-          <button
-            className={styles.modernButton}
-            type="submit"
-          >
-            Search
-          </button>
-        </div>
-      </form>
-    </>
+     <div className="body">
+       <form className={styles.Searchform} onSubmit={handleSubmit}>
+         <div className={styles.inputContainer}>
+           <input
+             className={styles.modernInput}
+             onChange={(e) => setsummonerName(e.target.value)}
+             value={summonerName}
+             type="text"
+             placeholder="Enter summoner name..."
+           />
+           <button
+             className={styles.modernButton}
+             type="submit"
+           >
+             Search
+           </button>
+         </div>
+       </form>
+     </div>
   );
 }
 
-/* > */
+/* return (
+    <div className={styles.FormContainer}>
+    <form className={styles.Searchform} onSubmit={handleSubmit}>
+      <div className={styles.inputContainer}>
+        <input
+          className={styles.modernInput}
+          onChange={(e) => setsummonerName(e.target.value)}
+          value={summonerName}
+          type="text"
+          placeholder="Enter summoner name..."
+        />
+        <button
+          className={styles.modernButton}
+          type="submit"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+  );
+   */
+

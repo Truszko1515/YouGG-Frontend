@@ -8,21 +8,16 @@ import {
 // pages
 import Home from "./Pages/Home/Home";
 import About from "./Pages/Home/About";
-import Faq from "./Pages/Help/Faq";
-import Contact from "./Pages/Help/Contact";
+import Faq from "./Pages/Home/Faq";
+import Contact from "./Pages/Home/Contact";
 import NotFound from "./Pages/Error/NotFound";
-import Careers, { careersLoader } from "./Pages/Careers/Careers";
-import CareerDetail, { CareerDetailsLoader } from "./Pages/Careers/CareerDetail";
-import CareersError from "./Pages/Careers/CareersError";
 import Summoner, { summonerLoader } from "./Pages/Player/Summoner";
-import TestComponent from "./Pages/Error/TestComponent";
 import LoginForm from "./Pages/Login/LoginForm/LoginForm";
 
 
 // layouts
 import RootLayout from "./Layouts/RootLayout";
 import HelpLayoyt from "./Layouts/HelpLayout";
-import CareersLayout from "./Layouts/CareersLayout";
 
 
 const router = createBrowserRouter(
@@ -38,34 +33,23 @@ const router = createBrowserRouter(
       </Route>
 
       <Route
-        path="careers"
-        element={<CareersLayout />}
-        errorElement={<CareersError />}
-      >
-        <Route index element={<Careers />} loader={careersLoader} />
-        <Route
-          path=":id"
-          element={<CareerDetail />}
-          loader={CareerDetailsLoader}
-        />
-      </Route>
-
-      <Route
         path="summoner/:summonerName"
         element={<Summoner />}
         loader={summonerLoader}
       />
-
+      
       <Route path="*" element={<NotFound />} />
+      
     </Route>
     
+    <Route path="login" element={<LoginForm />} />
     </>
   )
 );
 
 function App() {
-  //return  <RouterProvider router={router} />
-  return <LoginForm />
+  return  <RouterProvider router={router} />
+  //return <LoginForm />
 }
 
 export default App;

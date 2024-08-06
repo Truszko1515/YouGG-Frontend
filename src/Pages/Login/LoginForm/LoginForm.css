@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-* {
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+ .container {
     font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -17,12 +17,12 @@ body {
     background: url('../Assets/LoginBackground-2.jpg') no-repeat;
     background-size: cover;
     background-position: center;
-}
+} 
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Cansolas,
     'Courier New', monospace;
-}
+} 
 
 .wrapper {
     width: 420px;

@@ -1,3 +1,15 @@
+.profileIcon {
+    margin: 0;
+    padding: 20px;
+    font-family: "Poppins";
+    background: var(--secondary);
+}
+
+.profileIcon * {
+    color: #fff;
+    margin: 0;
+}
+
 .imgTextWrapper {
     position: relative;
     width: 100%; 
@@ -10,10 +22,6 @@
     position: absolute;
     left: 9%;
     top: 5%;
-}
-
-.imgWrapper {
-
 }
 
 .textOnImage {
@@ -35,6 +43,3 @@
     border-radius: 15%;
     text-align: center;
 }
-
-
-

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "../CSS/ProfileIcon.module.css";
+import styles from "../../../../CSS/ProfileIcon.module.css";
 
 export default function ProfileIcon({ summonerName }) {
    //const [summonerInfo, setSummonerInfo] = useState();
@@ -25,22 +25,25 @@ export default function ProfileIcon({ summonerName }) {
   }, []);
 
   return isLoaded ? (
-    <div className={styles.imgTextWrapper}>
-      <div className={styles.imgWrapper}>
-        <img
-          src={
-            process.env.PUBLIC_URL + "/ProfileIcon/" + summonerInfo.profileIconId + ".png"
-          }
-          className={styles.imageStyle}
-          
-        ></img>
-        <div className={styles.summonerName}>
-          {summonerName + " #EUW"}
+    
+    <div className={styles.profileIcon}>
+      <div className={styles.imgTextWrapper}>
+        <div className={styles.imgWrapper}>
+          <img
+            src={
+              process.env.PUBLIC_URL + "/ProfileIcon/" + summonerInfo.profileIconId + ".png"
+            }
+            className={styles.imageStyle}
+            
+          ></img>
+          <div className={styles.summonerName}>
+            {summonerName + " #EUW"}
+          </div>
+          <div className={styles.textOnImage}>{summonerInfo.summonerLevel} </div>
         </div>
-        <div className={styles.textOnImage}>{summonerInfo.summonerLevel} </div>
-      </div>
-
       
+        
+      </div>
     </div>
   ) : (
     <>Niezaładowane</>

@@ -1,0 +1,41 @@
+
+  .rootLayout {
+  margin: 0;
+  padding: 20px;
+  font-family: "Poppins";
+  background: var(--secondary);
+}
+
+.rootLayout * {
+  color: #fff;
+  margin: 0;
+}  
+
+/* .headerNav {
+  display: flex;
+  gap: 16px;
+  justify-content: end;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.headerTitle {
+  margin-right: auto;
+  border-bottom: 3px solid var(--primary);
+}
+
+.navLink {
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.navLinkActive {
+  background: var(--primary);
+}
+
+.mainContent {
+  max-width: 1200px;
+  margin: 40px auto;
+} */
+

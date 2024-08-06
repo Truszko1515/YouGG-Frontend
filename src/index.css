@@ -4,27 +4,39 @@
   --primary: #bc4124;
   --secondary: #2b3452;
 }
-body {
+
+* {
+  color: #fff;
+  margin: 0;
+} 
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+.body{
+  height: 100%;
   margin: 0;
   padding: 20px;
   font-family: "Poppins";
   background: var(--secondary);
 }
-* {
-  color: #fff;
-  margin: 0;
-}
-p {
+
+.paragraph {
   margin: 20px 0;
 }
-button {
+
+.btn-contact {
   border: 0;
   padding: 8px;
   border-radius: 4px;
   color: white;
   background: var(--primary);
   cursor: pointer;
-}
+} 
 
 /* navbar */
 header nav {
@@ -51,7 +63,7 @@ header nav a.active {
 main {
   max-width: 1200px;
   margin: 40px auto;
-}
+} 
 
 /* help layout */
 .help-layout nav {
@@ -82,13 +94,13 @@ main {
 }
 
 /* contact form */
-form {
+.contact-form {
   margin-top: 30px;
 }
-form input, form label span, form textarea {
+.contact-form input, .contact-form label span, .contact-form textarea {
   display: block;
 }
-form input, form textarea {
+.contact-form input, .contact-form textarea {
   margin-bottom: 30px;
   padding: 8px;
   border-radius: 4px;
@@ -96,36 +108,8 @@ form input, form textarea {
   width: 300px;
   color: var(--secondary);
 }
-form label span {
+.contact-form label span {
   margin-bottom: 10px;
-}
-
-/* careers list */
-.careers > a {
-  display: block;
-  background: rgba(0,0,0,0.2);
-  padding: 20px;
-  border-radius: 4px;
-  margin: 20px 0;
-  text-decoration: none;
-}
-.careers > a:hover p {
-  color: var(--primary);
-}
-.careers p {
-  margin: 0;
-}
-.careers > a p:last-child {
- font-size: 0.8em;
- color: #bbb;
-}
-
-/* careers details */
-.career-details {
-  background: rgba(0,0,0,0.2);
-  padding: 20px;
-  border-radius: 4px;
-  margin: 20px 0;
 }
 
 /* logo */

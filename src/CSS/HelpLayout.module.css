@@ -1,0 +1,37 @@
+/* .helpLayout {
+    margin: 0;
+    padding: 20px;
+    font-family: "Poppins";
+    background: var(--secondary);
+  }
+  
+  .helpLayout * {
+    color: #fff;
+    margin: 0;
+  } */
+
+  /* .paragraph {
+    margin: 20px 0;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
+  }
+  
+  .navLink {
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  
+  .navLinkHover:hover {
+    border-color: var(--primary);
+  }
+  
+  .navLinkActive {
+    background: var(--primary);
+  } */
