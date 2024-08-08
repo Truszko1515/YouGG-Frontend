@@ -3,7 +3,7 @@ import styles from "../../CSS/NotFound.module.css";
 
 export default function NotFound() {
   return (
-    <div>
+    <div className="body">
       <h2>Page not found!</h2>
       <p className="paragraph">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia alias

@@ -2,7 +2,7 @@ import styles from "../../CSS/Faq.module.css";
 
 export default function Faq() {
   return (
-    <div className="faq">
+    <div className="body">
       <h3>Frequently Asked Questions</h3>
 
       <div className="question">

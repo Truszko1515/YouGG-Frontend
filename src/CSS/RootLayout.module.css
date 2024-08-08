@@ -11,6 +11,17 @@
   margin: 0;
 }  
 
+.btnLogout {
+  border: 0;
+  padding: 8px;
+  border-radius: 4px;
+  color: white;
+  background: rgb(208, 133, 35);
+  cursor: pointer;
+  font-family: "Poppins";
+  font-weight: ;
+}
+
 /* .headerNav {
   display: flex;
   gap: 16px;

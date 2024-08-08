@@ -3,18 +3,22 @@ import styles from "../CSS/HelpLayout.module.css";
 
 export default function HelpLayout() {
   return (
-    <div className="help-layout">
-
-      <h2>Website Help</h2>
-      <p className="paragraph">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque quas debitis quibusdam deserunt repellat hic molestias ipsum commodi aut odit!</p>
-
-      <nav>
-        <NavLink to="faq">View the FAQ</NavLink>
-        <NavLink to="contact">Contact Us</NavLink>
-      </nav>
-
-      <Outlet />
-
+    <div className="body">
+      <div className="help-layout">
+      
+        <h2>Website Help</h2>
+        <p className="paragraph">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque quas debitis quibusdam deserunt repellat hic molestias ipsum commodi aut odit!</p>
+      
+        <nav>
+          <NavLink to="faq">View the FAQ</NavLink>
+          <NavLink to="contact">Contact Us</NavLink>
+        </nav>
+      
+        <main>
+          <Outlet />
+        </main>
+      
+      </div>
     </div>
   )
 }

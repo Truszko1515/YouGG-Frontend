@@ -14,42 +14,96 @@ import NotFound from "./Pages/Error/NotFound";
 import Summoner, { summonerLoader } from "./Pages/Player/Summoner";
 import LoginForm from "./Pages/Login/LoginForm/LoginForm";
 
-
 // layouts
 import RootLayout from "./Layouts/RootLayout";
-import HelpLayoyt from "./Layouts/HelpLayout";
+import HelpLayout from "./Layouts/HelpLayout";
 
+// Auth
+import { AuthProvider } from "./Authentication/AuthContext";
+import ProtectedRoute from "./Authentication/ProtectedRoute";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-    <Route  path="/" element={<RootLayout />}>
-      <Route index element={<Home />} />
-      <Route path="about" element={<About />} />
+      <Route path="/login" element={<LoginForm />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
 
-      <Route path="help" element={<HelpLayoyt />}>
-        <Route path="faq" element={<Faq />} />
-        <Route path="contact" element={<Contact />} />
+          <Route path="help" element={<HelpLayout />}>
+            <Route path="faq" element={<Faq />} />
+            <Route path="contact" element={<Contact />} />
+          </Route>
+
+          <Route path="summoner/:summonerName" element={<Summoner />} loader={summonerLoader} />
+
+        </Route>
       </Route>
 
-      <Route
-        path="summoner/:summonerName"
-        element={<Summoner />}
-        loader={summonerLoader}
-      />
-      
       <Route path="*" element={<NotFound />} />
-      
-    </Route>
-    
-    <Route path="login" element={<LoginForm />} />
     </>
   )
 );
 
 function App() {
-  return  <RouterProvider router={router} />
-  //return <LoginForm />
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 }
 
 export default App;
+
+/* const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+
+        <Route path="help" element={<HelpLayoyt />}>
+          <Route path="faq" element={<Faq />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+
+        <Route
+          path="summoner/:summonerName"
+          element={<Summoner />}
+          loader={summonerLoader}
+        />
+
+        <Route path="*" element={<NotFound />} />
+      </Route>
+
+      <Route path="login" element={<LoginForm />} />
+    </>
+  )
+); */
+
+// const router = createBrowserRouter(
+//   createRoutesFromElements(
+//     <>
+//       <Route path="/login" element={<LoginForm />}>
+//         <ProtectedRoute path="/" element={<RootLayout />}>
+//           <ProtectedRoute index element={<Home />} />
+//           <ProtectedRoute path="about" element={<About />} />
+
+//           <ProtectedRoute path="help" element={<HelpLayoyt />}>
+//             <ProtectedRoute path="faq" element={<Faq />} />
+//             <ProtectedRoute path="contact" element={<Contact />} />
+//           </ProtectedRoute>
+
+//           <ProtectedRoute
+//             path="summoner/:summonerName"
+//             element={<Summoner />}
+//             loader={summonerLoader}
+//           />
+
+//           <Route path="*" element={<NotFound />} />
+//         </ProtectedRoute>
+//       </Route>
+//     </>
+//   )
+// );

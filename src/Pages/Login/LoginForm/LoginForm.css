@@ -40,7 +40,7 @@ code {
 }
 
 .wrapper.active {
-    height: 520px;
+    height: 600px;
 }
 
 .wrapper h1 {
@@ -163,4 +163,19 @@ code {
     transition: none;
 }
 
+/* errors */
+.register-error {
+    color: red;
+    font-weight: bold;
+    padding: 0 0 13px 0;
+}
+
+.login-error {
+    color: red;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 0 0;
+}
 

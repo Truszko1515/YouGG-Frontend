@@ -26,23 +26,25 @@ export default function ProfileIcon({ summonerName }) {
 
   return isLoaded ? (
     
-    <div className={styles.profileIcon}>
-      <div className={styles.imgTextWrapper}>
-        <div className={styles.imgWrapper}>
-          <img
-            src={
-              process.env.PUBLIC_URL + "/ProfileIcon/" + summonerInfo.profileIconId + ".png"
-            }
-            className={styles.imageStyle}
-            
-          ></img>
-          <div className={styles.summonerName}>
-            {summonerName + " #EUW"}
+    <div className="body">
+      <div className={styles.profileIcon}>
+        <div className={styles.imgTextWrapper}>
+          <div className={styles.imgWrapper}>
+            <img
+              src={
+                process.env.PUBLIC_URL + "/ProfileIcon/" + summonerInfo.profileIconId + ".png"
+              }
+              className={styles.imageStyle}
+              
+            ></img>
+            <div className={styles.summonerName}>
+              {summonerName + " #EUW"}
+            </div>
+            <div className={styles.textOnImage}>{summonerInfo.summonerLevel} </div>
           </div>
-          <div className={styles.textOnImage}>{summonerInfo.summonerLevel} </div>
-        </div>
-      
         
+          
+        </div>
       </div>
     </div>
   ) : (

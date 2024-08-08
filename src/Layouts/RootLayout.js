@@ -1,7 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
 import styles from "../CSS/RootLayout.module.css";
+import { useAuth } from '../Authentication/AuthContext';
 
 export default function RootLayout() {
+
+  const { logout } = useAuth();
+
   return (
     <div className="body">
       <header>
@@ -10,6 +14,7 @@ export default function RootLayout() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="about">About</NavLink>
           <NavLink to="help">Help</NavLink>
+          <button className={styles.btnLogout} onClick={logout}>Logout</button>
         </nav>
       </header>
 

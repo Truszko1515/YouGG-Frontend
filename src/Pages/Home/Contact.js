@@ -3,7 +3,7 @@ import styles from "../../CSS/Contact.module.css";
 
 export default function Contact() {
   return (
-    <div className="contact">
+    <div className="body">
       <h3>Contact Us</h3>
       <form className="contact-form">
         <label>
