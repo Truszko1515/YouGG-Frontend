@@ -33,13 +33,11 @@ export const AuthProvider = ({ children }) => {
   const login = (data) => {
     const token = data;
     const decodedToken = jwtDecode(token);
-    console.log(decodedToken.exp);
     const user = { ...decodedToken, token };
 
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
 
-    console.log("loguje ;)")
     setUser(user);
     setLogoutTimer((decodedToken.exp * 1000) - Date.now());
   };

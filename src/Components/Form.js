@@ -3,13 +3,11 @@ import styles from "../CSS/Form.module.css";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 
 export default function Form() {
-  const [summonerName, setsummonerName] = useState("");
+  const [summonerName, setsummonerName] = useState("joohn senna");
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(summonerName);
-
     navigate("/summoner/" + summonerName);
   };
 

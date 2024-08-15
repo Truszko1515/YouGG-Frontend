@@ -8,8 +8,8 @@ import axios from 'axios';
 
 const LoginForm = () => {
   const [action, setAction] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("string@gmail.com");
+  const [password, setPassword] = useState("string");
   const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
 

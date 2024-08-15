@@ -11,18 +11,18 @@ export default function ProfileIcon({ summonerName }) {
   });
   const [isLoaded, setIsLoaded] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        "https://localhost:7041/api/summoner/" + summonerName
-      );
-      const data = await response.json();
-      setSummonerInfo(data);
-      setIsLoaded(true);
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await fetch(
+  //       "https://localhost:7041/api/summoner/" + summonerName
+  //     );
+  //     const data = await response.json();
+  //     setSummonerInfo(data);
+  //     setIsLoaded(true);
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   return isLoaded ? (
     
@@ -41,9 +41,7 @@ export default function ProfileIcon({ summonerName }) {
               {summonerName + " #EUW"}
             </div>
             <div className={styles.textOnImage}>{summonerInfo.summonerLevel} </div>
-          </div>
-        
-          
+          </div>  
         </div>
       </div>
     </div>
