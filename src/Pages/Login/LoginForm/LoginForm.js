@@ -37,7 +37,7 @@ const LoginForm = () => {
     try 
     {
       const response = await axios.post('https://localhost:7041/api/Auth/login', { email, password });
-      console.log(response.data)
+      //console.log(typeof response.data)
       login(response.data); // Store user data
       navigate('/');
 
@@ -86,6 +86,7 @@ const LoginForm = () => {
           <button onClick={handleGoToLogin}>Go to Login</button>
         </div>
       ) : (
+        
         <div className={`wrapper${action}`}>
           <div className="form-box login">
             <form action="" onSubmit={handleLoginSubmit}>

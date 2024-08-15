@@ -6,6 +6,7 @@ export default function Summoner() {
   const navigate = useNavigate();
   const { summonerName } = useParams();
   const name = useLoaderData(); 
+  
 
   return (
     <div className={styles.summoner}> 
