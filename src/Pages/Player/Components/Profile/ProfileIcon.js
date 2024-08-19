@@ -31,10 +31,7 @@ export default function ProfileIcon({
             <div className={styles.imgWrapper}>
               <img
                 src={
-                  process.env.PUBLIC_URL +
-                  "/ProfileIcon/" +
-                  ProfileIconId +
-                  ".png"
+                  process.env.REACT_APP_PROFILE_ICON_PATH + ProfileIconId + ".png"
                 }
                 className={styles.imageStyle}
               ></img>

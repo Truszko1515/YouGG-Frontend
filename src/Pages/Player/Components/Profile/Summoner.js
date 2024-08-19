@@ -27,7 +27,6 @@ export default function Summoner() {
     }
   }, [summonerExists, navigate]);
 
-
   
   return loading ? (
     <div className={styles.loadingContainer}>
