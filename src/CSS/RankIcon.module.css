@@ -1,0 +1,53 @@
+/* rank icon */ 
+.profileContainer {
+    display: flex;
+    align-items: center;
+    background-color: #f4f4f4; /* Background color similar to the image */
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%; /* Adjust width as needed */
+  }
+
+  
+  .rankIcon {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+  }
+  
+  .profileInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .rankType {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+  }
+  
+  .summonerName {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+  }
+  
+  .rankDetails {
+    font-size: 16px;
+    color: #1a73e8; /* Blue color for the rank */
+    margin: 2px 0;
+  }
+  
+  .rankStats {
+    font-size: 14px;
+    color: #666;
+    margin: 2px 0;
+  }
+  
+  .winRatio {
+    font-size: 14px;
+    color: #666;
+    margin: 2px 0;
+  }

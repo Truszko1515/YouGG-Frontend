@@ -1,0 +1,19 @@
+.popup {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    margin: 10px 10px 0 0;
+    transform: translate(-50%, -50%);
+    background-color: #955f63;
+    color: #fb011a;
+    padding: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 10px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .popupContent {
+    text-align: center;
+  }

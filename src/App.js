@@ -11,7 +11,7 @@ import About from "./Pages/Home/About";
 import Faq from "./Pages/Home/Faq";
 import Contact from "./Pages/Home/Contact";
 import NotFound from "./Pages/Error/NotFound";
-import Summoner, { summonerLoader } from "./Pages/Player/Summoner";
+import Summoner, { summonerLoader } from "./Pages/Player/Components/Profile/Summoner.js";
 import LoginForm from "./Pages/Login/LoginForm/LoginForm";
 
 // layouts

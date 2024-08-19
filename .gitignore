@@ -6,6 +6,7 @@
 .pnp.js
 .png
 /public/ProfileIcon
+/public/DragonTail/
 
 # testing
 /coverage
