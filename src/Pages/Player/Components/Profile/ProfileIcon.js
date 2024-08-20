@@ -6,7 +6,14 @@ export default function ProfileIcon({
   summonerName,
   summonerLevel,
   ProfileIconId,
+  tier,
+  rank,
+  leaguePoints,
+  wins,
+  losses,
 }) {
+
+  
   return (
     <>
       <div className="body">
@@ -15,16 +22,17 @@ export default function ProfileIcon({
 
             <div className={RankIconStyles.profileContainer}>
               <img
-                src={`path_to_rank_icon_image/${ProfileIconId}.png`}
+                src={process.env.REACT_APP_RANK_ICON_PATH + "TFT_Regalia_" + 
+                     tier.charAt(0).toUpperCase() + tier.slice(1).toLowerCase() + ".png"}
                 alt="Rank Icon"
                 className={RankIconStyles.rankIcon}
               />
               <div className={RankIconStyles.profileInfo}>
                 <h3 className={RankIconStyles.rankType}>Ranked Solo</h3>
                 <p className={RankIconStyles.summonerName}>{summonerName}</p>
-                <p className={RankIconStyles.rankDetails}>Challenger 1</p>
-                <p className={RankIconStyles.rankStats}>701 LP / 0W 0L</p>
-                <p className={RankIconStyles.winRatio}>Win Ratio 50%</p>
+                <p className={RankIconStyles.rankDetails}>{tier} {rank}</p>
+                <p className={RankIconStyles.rankStats}>{leaguePoints} LP / {wins}W {losses}L</p>
+                <p className={RankIconStyles.winRatio}>Win Ratio {(wins/(wins+losses)*100)}%</p>
               </div>
             </div>
 
@@ -40,6 +48,7 @@ export default function ProfileIcon({
               </div>
               <div className={styles.textOnImage}>{summonerLevel} </div>
             </div>
+
           </div>
         </div>
       </div>

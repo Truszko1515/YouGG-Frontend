@@ -8,6 +8,12 @@ export default function Form() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    
+    let index = summonerName.indexOf("#");
+    let tagLine = summonerName.substr(index+1, summonerName.length);
+    
+    localStorage.setItem("tagLine", tagLine)
+
     navigate("/summoner/" + summonerName);
   };
 

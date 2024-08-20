@@ -11,6 +11,26 @@ export default function Summoner() {
   const SummonerInfo = useLoaderData();
   const [summonerExists, setSummonerExists] = useState(SummonerInfo);
   const [loading, setLoading] = useState(true);
+  const token = JSON.parse(localStorage.getItem("user"))?.token;
+  const [summonerLeagueEntry, setSummonerLeagueEntry] = useState();
+
+  const fetchLeagueEntry = async () => {
+    try {
+      const response = await axios.get(
+        `https://localhost:7041/api/summoner/LeagueEntry/${summonerName}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("fetchLeagueEntry - udany request");
+      console.log(response.data);
+      setSummonerLeagueEntry(response.data);
+    } catch (error) {
+      console.log("Error fetching league entry:", error);
+    }
+  };
 
   useEffect(() => {
     if (!summonerExists) {
@@ -21,13 +41,14 @@ export default function Summoner() {
         });
       }, 1150);
     } else {
+      fetchLeagueEntry();  
+      // Awaiting
       setTimeout(() => {
         setLoading(false);
       }, 1150);
     }
   }, [summonerExists, navigate]);
 
-  
   return loading ? (
     <div className={styles.loadingContainer}>
       <ClipLoader size={300} color={"#123abcd"} loading={loading} />
@@ -39,6 +60,12 @@ export default function Summoner() {
           summonerName={summonerName}
           summonerLevel={SummonerInfo.summonerLevel}
           ProfileIconId={SummonerInfo.profileIconId}
+          //
+          tier={summonerLeagueEntry.tier}
+          rank={summonerLeagueEntry.rank}
+          leaguePoints={summonerLeagueEntry.leaguePoints}
+          wins={summonerLeagueEntry.wins}
+          losses={summonerLeagueEntry.losses}
         />
       </div>
     </>
@@ -46,14 +73,20 @@ export default function Summoner() {
 }
 
 export const summonerLoader = async ({ params }) => {
-  const { summonerName } = params;
-
+  let { summonerName } = params;
+  
   const token = JSON.parse(localStorage.getItem("user"))?.token;
+  const tagLine = localStorage.getItem("tagLine");
 
-  //here we check if summoner exists
+  // Combine summonerName and tagLine
+  const fullSummonerName = encodeURIComponent(summonerName + "#" + tagLine);
+  
+  console.log("https://localhost:7041/api/summoner/info/" + fullSummonerName);
+
+  // Send the GET request with the full summoner name including tagLine
   try {
     const response = await axios.get(
-      "https://localhost:7041/api/summoner/info/" + summonerName,
+      "https://localhost:7041/api/summoner/info/" + fullSummonerName,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -61,12 +94,12 @@ export const summonerLoader = async ({ params }) => {
       }
     );
 
-    console.log("summonerLoader - udany Request: ");
+    console.log("summonerLoader - successful request: ");
     console.log(response.data);
 
     return response.data;
   } catch (err) {
-    console.log("summonerLoader - nieudany request");
+    console.log("summonerLoader - failed request");
     console.log(err.response);
     return false;
   }
