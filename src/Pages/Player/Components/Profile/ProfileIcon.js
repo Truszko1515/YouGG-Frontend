@@ -6,6 +6,8 @@ export default function ProfileIcon({
   summonerName,
   summonerLevel,
   ProfileIconId,
+  summonerTagLine,
+  // 
   tier,
   rank,
   leaguePoints,
@@ -44,7 +46,7 @@ export default function ProfileIcon({
                 className={styles.imageStyle}
               ></img>
               <div className={styles.summonerName}>
-                {summonerName + " #EUW"}
+                {summonerName + summonerTagLine}
               </div>
               <div className={styles.textOnImage}>{summonerLevel} </div>
             </div>

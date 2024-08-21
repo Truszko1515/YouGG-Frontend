@@ -14,7 +14,7 @@ export default function RootLayout() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="about">About</NavLink>
           <NavLink to="help">Help</NavLink>
-          <button className={styles.btnLogout} onClick={logout}>Logout</button>
+          <button className={styles.btnLogout} onClick={() => logout()}>Logout</button>
         </nav>
       </header>
 

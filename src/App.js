@@ -36,7 +36,7 @@ const router = createBrowserRouter(
             <Route path="contact" element={<Contact />} />
           </Route>
 
-          <Route path="summoner/:summonerName" element={<Summoner />} loader={summonerLoader} />
+          <Route path="summoner/:summonerName/:tag?" element={<Summoner />} loader={summonerLoader} />
 
         </Route>
       </Route>

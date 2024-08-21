@@ -8,15 +8,16 @@ export default function Form() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-    let index = summonerName.indexOf("#");
-    let tagLine = summonerName.substr(index+1, summonerName.length);
-    
-    localStorage.setItem("tagLine", tagLine)
-
-    navigate("/summoner/" + summonerName);
+  
+    // Extract the summonerName and tag from the input
+    const [name, tag] = summonerName.split('#');
+  
+    // If the tag exists, add it to the URL
+    const url = tag ? `/summoner/${name}/${tag}` : `/summoner/${name}`;
+  
+    // Navigate to the constructed URL
+    navigate(url);
   };
-
   return (
      <div className="body">
        <form className={styles.Searchform} onSubmit={handleSubmit}>

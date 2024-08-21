@@ -6,27 +6,22 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [activeUserIndex, setActiveUserIndex] = useState(0);
 
   useEffect(() => {
-    // Check if a user is already logged in on component mount
-    const storedUser = localStorage.getItem('user');
-    const storedToken = localStorage.getItem('token');
-    if (storedUser && storedToken) {
-      const decodedToken = jwtDecode(storedToken);
-      const currentTime = Date.now() / 1000;
-      if (decodedToken.exp > currentTime) {
-        setUser(storedUser);
-        setLogoutTimer((decodedToken.exp - currentTime) * 1000);
-      } else {
-        logout();
-      }
+    // Load user sessions from sessionStorage
+    const storedUsers = JSON.parse(sessionStorage.getItem('users')) || [];
+    setUsers(storedUsers);
+
+    if (storedUsers.length > 0) {
+      setActiveUserIndex(0); // Default to the first user
     }
   }, []);
 
-  const setLogoutTimer = (duration) => {
+  const setLogoutTimer = (duration, index) => {
     setTimeout(() => {
-      logout();
+      logout(index);
     }, duration);
   };
 
@@ -35,21 +30,29 @@ export const AuthProvider = ({ children }) => {
     const decodedToken = jwtDecode(token);
     const user = { ...decodedToken, token };
 
-    localStorage.setItem('user', JSON.stringify(user));
-    localStorage.setItem('token', token);
-
-    setUser(user);
-    setLogoutTimer((decodedToken.exp * 1000) - Date.now());
+    const newUsers = [...users, user];
+    sessionStorage.setItem('users', JSON.stringify(newUsers));
+    localStorage.setItem("users", JSON.stringify(newUsers)); // test
+    setUsers(newUsers);
+    setActiveUserIndex(newUsers.length - 1); // Set the new user as active
+    setLogoutTimer((decodedToken.exp * 1000) - Date.now(), newUsers.length - 1);
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
+  const logout = (index = activeUserIndex) => {
+    const newUsers = users.filter((_, i) => i !== index);
+    setUsers(newUsers);
+    sessionStorage.setItem('users', JSON.stringify(newUsers));
+    localStorage.setItem("users", JSON.stringify(newUsers)); // test
+  
+    if (index === activeUserIndex && newUsers.length > 0) {
+      setActiveUserIndex(0); // Set to the first user, if available
+    } else if (newUsers.length === 0) {
+      setActiveUserIndex(null); // No users left
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user: users[activeUserIndex], login, logout, users, setActiveUserIndex }}>
       {children}
     </AuthContext.Provider>
   );

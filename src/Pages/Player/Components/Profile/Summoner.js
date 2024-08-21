@@ -7,17 +7,18 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Summoner() {
   const navigate = useNavigate();
-  const { summonerName } = useParams();
+  const { summonerName, tag } = useParams();
   const SummonerInfo = useLoaderData();
   const [summonerExists, setSummonerExists] = useState(SummonerInfo);
   const [loading, setLoading] = useState(true);
   const token = JSON.parse(localStorage.getItem("user"))?.token;
   const [summonerLeagueEntry, setSummonerLeagueEntry] = useState();
+  const [fullName, setFullName] = useState(summonerName + (tag ? `%23${tag}` : ""));
 
   const fetchLeagueEntry = async () => {
     try {
       const response = await axios.get(
-        `https://localhost:7041/api/summoner/LeagueEntry/${summonerName}`,
+        `https://localhost:7041/api/summoner/LeagueEntry/${fullName}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -60,6 +61,7 @@ export default function Summoner() {
           summonerName={summonerName}
           summonerLevel={SummonerInfo.summonerLevel}
           ProfileIconId={SummonerInfo.profileIconId}
+          summonerTagLine={(tag ? `#${tag}`  : "#EUW")}
           //
           tier={summonerLeagueEntry.tier}
           rank={summonerLeagueEntry.rank}
@@ -73,20 +75,23 @@ export default function Summoner() {
 }
 
 export const summonerLoader = async ({ params }) => {
-  let { summonerName } = params;
-  
+  const { summonerName, tag } = params; // Adjust this based on your URL structure
+  let fullName = summonerName;
+
+  // If the tag exists, append it to the summonerName
+  if (tag) {
+    fullName += `%23${tag}`;
+  }
+
   const token = JSON.parse(localStorage.getItem("user"))?.token;
-  const tagLine = localStorage.getItem("tagLine");
-
-  // Combine summonerName and tagLine
-  const fullSummonerName = encodeURIComponent(summonerName + "#" + tagLine);
   
-  console.log("https://localhost:7041/api/summoner/info/" + fullSummonerName);
+  console.log(fullName);
+  console.log("https://localhost:7041/api/summoner/info/" + fullName);
 
-  // Send the GET request with the full summoner name including tagLine
+  // Send the GET request with the full summoner name including the tag (if present)
   try {
     const response = await axios.get(
-      "https://localhost:7041/api/summoner/info/" + fullSummonerName,
+      "https://localhost:7041/api/summoner/info/" + fullName,
       {
         headers: {
           Authorization: `Bearer ${token}`,
