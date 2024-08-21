@@ -34,7 +34,7 @@ export default function ProfileIcon({
                 <p className={RankIconStyles.summonerName}>{summonerName}</p>
                 <p className={RankIconStyles.rankDetails}>{tier} {rank}</p>
                 <p className={RankIconStyles.rankStats}>{leaguePoints} LP / {wins}W {losses}L</p>
-                <p className={RankIconStyles.winRatio}>Win Ratio {(wins/(wins+losses)*100)}%</p>
+                <p className={RankIconStyles.winRatio}>Win Ratio {Math.round(wins/(wins+losses)*100)}%</p>
               </div>
             </div>
 

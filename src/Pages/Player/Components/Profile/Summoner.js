@@ -85,9 +85,6 @@ export const summonerLoader = async ({ params }) => {
 
   const token = JSON.parse(localStorage.getItem("user"))?.token;
   
-  console.log(fullName);
-  console.log("https://localhost:7041/api/summoner/info/" + fullName);
-
   // Send the GET request with the full summoner name including the tag (if present)
   try {
     const response = await axios.get(
