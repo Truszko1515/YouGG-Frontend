@@ -1,53 +1,54 @@
-/* rank icon */ 
 .profileContainer {
     display: flex;
     align-items: center;
-    background-color: #f4f4f4; /* Background color similar to the image */
+    justify-content: center; /* Center content */
+    background-color: #ffffff; /* Background color */
     padding: 10px;
     border-radius: 8px;
-    width: 100%; /* Adjust width as needed */
-  }
+    flex-shrink: 0; /* Prevent shrinking */
+    margin-left: 0; /* Remove margin to bring divs closer */
+}
 
-  
-  .rankIcon {
+.rankIcon {
     width: 80px;
     height: 80px;
     margin-right: 15px;
-  }
-  
-  .profileInfo {
+}
+
+.profileInfo {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  
-  .rankType {
+    text-align: center; /* Center text */
+}
+
+.rankType {
     font-size: 14px;
     color: #888;
     margin: 0;
-  }
-  
-  .summonerName {
+}
+
+.summonerName {
     font-size: 18px;
     font-weight: bold;
     color: #333;
     margin: 0;
-  }
-  
-  .rankDetails {
+}
+
+.rankDetails {
     font-size: 16px;
-    color: #1a73e8; /* Blue color for the rank */
+    color: #1a73e8;
     margin: 2px 0;
-  }
-  
-  .rankStats {
+}
+
+.rankStats {
     font-size: 14px;
     color: #666;
     margin: 2px 0;
-  }
-  
-  .winRatio {
+}
+
+.winRatio {
     font-size: 14px;
     color: #666;
     margin: 2px 0;
-  }
+}

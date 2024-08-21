@@ -1,8 +1,17 @@
+.container {
+    display: flex;
+    justify-content: flex-start; /* Align items closer together */
+    align-items: center;
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #ffffff; /* Background color for the entire container */
+    border-radius: 8px;
+}
+
 .profileIcon {
-    margin: 0;
-    padding: 20px;
+    margin-right: 10px; /* Decrease the space between profile and rank icons */
     font-family: "Poppins";
-    background: var(--secondary);
+    flex-shrink: 0; /* Prevent shrinking */
+    margin-left: 10px;
 }
 
 .profileIcon * {
@@ -12,15 +21,16 @@
 
 .imgTextWrapper {
     position: relative;
-    width: 100%; 
-    background-color: green; 
+    display: flex; /* Flexbox for horizontal alignment */
+    align-items: center;
+    justify-content: center; /* Center content */
 }
 
-.imgTextWrapper .summonerName{
+.summonerName {
     display: inline-block;
     background-color: yellowgreen;
     position: absolute;
-    left: 9%;
+    left: 100px; /* Adjust as needed */
     top: 5%;
 }
 
@@ -30,7 +40,7 @@
     bottom: -3.5%;
     background-color: #313a35;
     color: white;
-    width: 3%;
+    width: auto;
     text-align: center;
     padding-inline: 10px;
     margin: 0 auto;
@@ -38,10 +48,17 @@
 } 
 
 .imageStyle {
-    width: 8%;
-    height: 50%;
+    width: 80px; /* Adjusted size */
+    height: 80px;
     border-radius: 15%;
     text-align: center;
 }
 
-
+/* inactive css styles */
+.summonerName {
+    display: inline-block;
+    background-color: yellowgreen;
+    position: absolute;
+    left: 100px; /* Adjust as needed */
+    top: 5%;
+}
