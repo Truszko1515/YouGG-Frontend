@@ -5,7 +5,7 @@ import { useAuth } from '../Authentication/AuthContext';
 export default function RootLayout() {
 
   const { logout } = useAuth();
-
+  
   return (
     <div className="body">
       <header>

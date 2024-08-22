@@ -1,64 +1,172 @@
 .container {
     display: flex;
-    justify-content: flex-start; /* Align items closer together */
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px; /* Adjust padding as needed */
-    background-color: #ffffff; /* Background color for the entire container */
+    padding: 20px;
+    background-color: #e0e0e0;
     border-radius: 8px;
-}
-
-.profileIcon {
-    margin-right: 10px; /* Decrease the space between profile and rank icons */
-    font-family: "Poppins";
-    flex-shrink: 0; /* Prevent shrinking */
-    margin-left: 10px;
-}
-
-.profileIcon * {
-    color: #fff;
-    margin: 0;
-}
-
-.imgTextWrapper {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 20px;
     position: relative;
-    display: flex; /* Flexbox for horizontal alignment */
+}
+  
+.leftSection, .rightSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: center; /* Center content */
-}
-
-.summonerName {
-    display: inline-block;
-    background-color: yellowgreen;
-    position: absolute;
-    left: 100px; /* Adjust as needed */
-    top: 5%;
-}
-
-.textOnImage {
-    position: absolute;
-    border-radius: 15px;
-    bottom: -3.5%;
-    background-color: #313a35;
-    color: white;
-    width: auto;
-    text-align: center;
-    padding-inline: 10px;
-    margin: 0 auto;
-    left: 21px;
+    flex-shrink: 0;
+    background-color: #f7f7f7; /* Tło sekcji */
+    padding: 20px;
+    border-radius: 8px;
+    width: 150px; /* Stała szerokość dla obu sekcji */
+    min-height: 250px; /* Ustawienie minimalnej wysokości, aby były równe */
+    
 } 
+.middleSection {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Zapewnia wyrównanie elementów w pionie */
+    text-align: left;
+    padding: 0 20px; /* Dodanie paddingu dla odstępu między sekcjami */
+    background-color: #f7f7f7;
+    color: #333333; /* Kolor tekstu */
+}
+  
+.middleSection h3 {
+    color: #2c3e50; /* Kolor dla nagłówków (np. H3) w middleSection */
+}
+.middleSection h4 {
+    color: #2c3e50; /* Kolor dla nagłówków (np. H3) w middleSection */
+}
 
+.middleSection p, .middleSection span {
+    color: #333333; /* Kolor dla paragrafów i spanów w middleSection */
+}
+
+.rightSection {
+    flex-shrink: 0;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffffec;
+}
+  
+.profileIcon {
+    text-align: center;
+    width: 120px;
+}
+  
+.imgTextWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+  
+.imgWrapper {
+    position: relative;
+}
+  
 .imageStyle {
-    width: 80px; /* Adjusted size */
+    width: 80px;
     height: 80px;
     border-radius: 15%;
     text-align: center;
+    display: block;
 }
-
-/* inactive css styles */
-.summonerName {
-    display: inline-block;
-    background-color: yellowgreen;
+  
+.textOnImage {
     position: absolute;
-    left: 100px; /* Adjust as needed */
-    top: 5%;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #313a35;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 10px;
+    font-size: 12px;
+    z-index: 10;
+}
+  
+.summonerTagLine {
+    margin-top: 10px;
+    font-size: 14px;
+    color: yellowgreen;
+    text-align: center;
+}
+  
+.matchStats {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+}
+  
+.kdaStats {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+  
+.doughnutContainer {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+  
+.kdaText {
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+}
+  
+.kdaText p {
+    margin: 3px 0;
+    line-height: 1.2;
+}
+  
+.champions {
+    margin-top: 10px;
+    text-align: left;
+    font-size: 12px;
+}
+  
+.champList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.champList li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+  
+.champList li img {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+  
+.positions {
+    width: 315px;
+    text-align: right;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Zapewnia wyśrodkowanie w pionie */
+}
+  
+.positions .chart-container {
+    width: 100%;
+    height: 80px;
+}
+  
+.positions canvas {
+    max-width: 100%;
+    max-height: 100%;
 }
