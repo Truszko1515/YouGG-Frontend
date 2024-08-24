@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, useLoaderData } from "react-router-dom";
-import ProfileIcon from "./ProfileIcon";
 import styles from "../../../../CSS/Summoner.module.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import axios from "axios";
+import ChampionMastery from "../Statistics/ChampionMastery";
+import ProfileIcon from "../Statistics/ProfileIcon";
 
 export default function Summoner() {
   const navigate = useNavigate();
@@ -21,6 +22,19 @@ export default function Summoner() {
   const [killParticipation, setKillParticipation] = useState(null);
   const [positions, setPositions] = useState(null);
   const [gamesRatio, setGamesRatio] = useState(null);
+  const [championsMastery, setChampionsMastery] = useState(null);
+
+ 
+  const champions = [
+    { name: "JarvanIV", masteryLevel: 8, points: 357969 },
+    { name: "Renekton", masteryLevel: 6, points: 541928 },
+    { name: "Ezreal", masteryLevel: 6, points: 485273 },
+    { name: "Tristana", masteryLevel: 5, points: 298737 },
+    { name: "Kalista", masteryLevel: 5, points: 298026 },
+    { name: "Yasuo", masteryLevel: 4, points: 271644 },
+
+  ];
+  
 
   const fetchChampionsPlayRate = async () => {
     try {
@@ -33,14 +47,33 @@ export default function Summoner() {
         }
       );
       setChampionsPlayRate(response.data);
+      console.log("Champions play rate chart - success");
+      console.log(response.data);
     } catch (error) {
       console.log("Error fetching Champions Play Rate: ", error);
     }
   };
+  const fetchChampionsMastery = async () => {
+    try {
+      const response = await axios.get(
+        `https://localhost:7041/api/Summoner/ChampionsMastery/${fullName}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setChampionsMastery(response.data);
+      console.log("Champions Mastery - success");
+      console.log(response.data);
+    } catch (error) {
+      console.log("Error fetching Champions Play Rate: ", error);
+    }
+  }
   const fetchLeagueEntry = async () => {
     try {
       const response = await axios.get(
-        `https://localhost:7041/api/summoner/LeagueEntry/${fullName}`,
+        `https://localhost:7041/api/Summoner/LeagueEntries/${fullName}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -48,6 +81,8 @@ export default function Summoner() {
         }
       );
       setSummonerLeagueEntry(response.data);
+      console.log("League entry - success");
+      console.log(response.data);
     } catch (error) {
       console.log("Error fetching league entry:", error);
     }
@@ -63,6 +98,8 @@ export default function Summoner() {
         }
       );
       setGamesRatio(response.data);
+      console.log("Games ratio - success");
+      console.log(response.data);
     } catch (error) {
       console.log("Error fetching Games Ratio:", error);
     }
@@ -78,6 +115,8 @@ export default function Summoner() {
         }
       );
       setPositions(response.data);
+      console.log("Positions - success");
+      console.log(response.data);
     } catch (error) {
       console.log("Error fetching Positions:", error);
     }
@@ -93,6 +132,8 @@ export default function Summoner() {
         }
       );
       setKDA(response.data);
+      console.log("KDA - success");
+      console.log(response.data);
     } catch (error) {
       console.log("Error fetching KDA: ", error);
     }
@@ -108,6 +149,8 @@ export default function Summoner() {
         }
       );
       setKillParticipation(response.data);
+      console.log("KP - success");
+      console.log(response.data);
     } catch (error) {
       console.log("Error fetching Kill Participation: ", error);
     }
@@ -126,15 +169,14 @@ export default function Summoner() {
         try {
           setLoading(true);
 
-          // Fetch all data in parallel
-          await Promise.all([
-            fetchChampionsPlayRate(),
-            fetchLeagueEntry(),
-            fetchGamesRatio(),
-            fetchPositions(),
-            fetchKDA(),
-            fetchKP(),
-          ]);
+          // Fetch data sequentially
+          await fetchChampionsPlayRate();
+          await fetchChampionsMastery();
+          await fetchLeagueEntry();
+          await fetchGamesRatio();
+          await fetchPositions();
+          await fetchKDA();
+          await fetchKP();
 
           setLoading(false);
         } catch (error) {
@@ -146,6 +188,9 @@ export default function Summoner() {
       fetchData();
     }
   }, [summonerExists, navigate]);
+
+  const totalMasteryPoints = championsMastery ? championsMastery.reduce((acc, champ) => acc + champ.masteryLevel, 0) : 0;
+  const totalChampionPoints = 4317884; // Przykładowa liczba punktów
 
   // Render after data is fetched and loading is complete
   return loading ||
@@ -175,6 +220,11 @@ export default function Summoner() {
         kda={KDA}
         kp={killParticipation}
         gamesRatio={gamesRatio}
+      />
+      <ChampionMastery
+        masteryPoints={totalChampionPoints}
+        heroPoints={totalMasteryPoints}
+        champions={championsMastery}
       />
     </div>
   );

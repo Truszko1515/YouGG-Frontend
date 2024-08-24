@@ -40,10 +40,15 @@ export default function ProfileIcon({
   kda = 0,
   kp = 0,
   champions = [],
-  positions = [{ roleInGame: "TOP", percentage: 0 },{ roleInGame: "Jungle", percentage: 0 },{ roleInGame: "Mid", percentage: 0 },{ roleInGame: "Adc", percentage: 0 },{ roleInGame: "Support", percentage: 0 },],
+  positions = [
+    { roleInGame: "TOP", percentage: 0 },
+    { roleInGame: "Jungle", percentage: 0 },
+    { roleInGame: "Mid", percentage: 0 },
+    { roleInGame: "Adc", percentage: 0 },
+    { roleInGame: "Support", percentage: 0 },
+  ],
   gamesRatio = { gamesPlayed: 20, wins: 10, losses: 10 },
 }) {
-
   const winRate = Math.round((wins / (wins + losses)) * 100);
   const kdaColor = kda > 3 ? "#00C853" : "#FF1744"; // Kolor KDA
   const tierFormatted = tier
@@ -99,7 +104,8 @@ export default function ProfileIcon({
                 {leaguePoints} LP / {wins}W {losses}L
               </p>
               <p className={RankIconStyles.winRatio}>
-                Win Ratio {Math.round((wins / (wins + losses)) * 100)}%
+                Win Ratio{" "}
+                {parseFloat(((wins / (wins + losses)) * 100).toFixed(2))}%
               </p>
             </div>
           </div>
