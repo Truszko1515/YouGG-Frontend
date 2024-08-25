@@ -9,6 +9,7 @@ const MatchList = ({ matches = []  }) => {
   }
   return (
     <div className={styles.matchList}>
+      <div className={styles.lastMatchesText}>Ostatnie 20 meczów:</div>
       {matches.map((match, index) => (
         <MatchDetails key={index} match={match} />
       ))}
