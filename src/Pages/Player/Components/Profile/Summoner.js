@@ -5,6 +5,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import axios from "axios";
 import ChampionMastery from "../Statistics/ChampionMastery";
 import ProfileIcon from "../Statistics/ProfileIcon";
+import MatchList from "../Statistics/MatchList";
 
 export default function Summoner() {
   const navigate = useNavigate();
@@ -23,19 +24,117 @@ export default function Summoner() {
   const [positions, setPositions] = useState(null);
   const [gamesRatio, setGamesRatio] = useState(null);
   const [championsMastery, setChampionsMastery] = useState(null);
+  const [matches, setMatches] = useState(null);
 
- 
-  const champions = [
-    { name: "JarvanIV", masteryLevel: 8, points: 357969 },
-    { name: "Renekton", masteryLevel: 6, points: 541928 },
-    { name: "Ezreal", masteryLevel: 6, points: 485273 },
-    { name: "Tristana", masteryLevel: 5, points: 298737 },
-    { name: "Kalista", masteryLevel: 5, points: 298026 },
-    { name: "Yasuo", masteryLevel: 4, points: 271644 },
-
+  const matchesDetails = [
+    {
+      type: "Ranked Solo",
+      timeAgo: "1 dzień temu",
+      champion: "Aatrox",
+      kills: 4,
+      deaths: 3,
+      assists: 4,
+      kdaRatio: 2.67,
+      items: ["item1", "item2", "item3", "item4"],
+      lanePhase: "Faza laningu 47:53",
+      spell1: "SummonerFlash.png",
+      spell2: "SummonerTeleport.png",
+      runePrimary: "perk-images/Styles/Precision/Conqueror/Conqueror.png",
+      runeSecondar: "perk-images/Styles/7203_Whimsy.png",
+      cs: "CS 198 (8.4)",
+      result: "Zwycięstwo",
+      additionalInfo: "Odporność",
+      team: [
+        { name: "Pantless", champion: "Yasuo" },
+        { name: "letmechaos", champion: "Zed" },
+        { name: "Blütenduft", champion: "Ahri" },
+        { name: "Flakkardo", champion: "Ashe" },
+        { name: "Yuank Le", champion: "Leona" },
+      ],
+      opponents: [
+        { name: "tukaan", champion: "Akali" },
+        { name: "NGX Slayer", champion: "Diana" },
+        { name: "Samsara", champion: "Lux" },
+        { name: "ROI DES", champion: "Ezreal" },
+        { name: "Desmond", champion: "Thresh" },
+      ],
+    },
+    {
+      type: "Ranked Solo",
+      timeAgo: "2 dni temu",
+      champion: "Khazix",
+      kills: 10,
+      deaths: 2,
+      assists: 4,
+      kdaRatio: 7,
+      items: ["item1", "item2", "item3", "item4"],
+      lanePhase: "Faza laningu 10:53",
+      cs: "CS 225 (10.4)",
+      result: "Zwycięstwo",
+      additionalInfo: "Odporność",
+      team: [
+        { name: "Pantless", champion: "Yasuo" },
+        { name: "letmechaos", champion: "Zed" },
+        { name: "Blütenduft", champion: "Ahri" },
+        { name: "Flakkardo", champion: "Ashe" },
+        { name: "Yuank Le", champion: "Leona" },
+      ],
+      opponents: [
+        { name: "tukaan", champion: "Akali" },
+        { name: "NGX Slayer", champion: "Diana" },
+        { name: "Samsara", champion: "Lux" },
+        { name: "ROI DES", champion: "Ezreal" },
+        { name: "Desmond", champion: "Thresh" },
+      ],
+    },
+    {
+      type: "Ranked Solo",
+      timeAgo: "2 dni temu",
+      champion: "Nami",
+      kills: 1,
+      deaths: 4,
+      assists: 23,
+      kdaRatio: 7,
+      items: ["item1", "item2", "item3", "item4"],
+      lanePhase: "Faza laningu 15:13",
+      cs: "CS 227 (1.2)",
+      result: "Zwycięstwo",
+      additionalInfo: "Odporność",
+      team: [
+        { name: "Pantlesssssssssssss", champion: "Yasuo" },
+        { name: "letmechaos", champion: "Zed" },
+        { name: "Blütenduft", champion: "Ahri" },
+        { name: "Flakkardo", champion: "Ashe" },
+        { name: "Yuank Le", champion: "Leona" },
+      ],
+      opponents: [
+        { name: "tukaan", champion: "Akali" },
+        { name: "NGX Slayer", champion: "Diana" },
+        { name: "Samsara", champion: "Lux" },
+        { name: "ROI DES", champion: "Ezreal" },
+        { name: "Desmond", champion: "Thresh" },
+      ],
+    },
+    // kolejne mecze...
   ];
-  
 
+  const fetchMatchesDetails = async () => {
+    try {
+      const response = await axios.get(
+        `https://localhost:7041/api/Summoner/MatchesDetails/${fullName}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setMatches(response.data);
+      console.log("Matches Details - success");
+      console.log(response.data);
+    } catch (error) {
+      console.log("Error fetching Matches Details: ", error);
+    }
+  };
   const fetchChampionsPlayRate = async () => {
     try {
       const response = await axios.get(
@@ -69,7 +168,7 @@ export default function Summoner() {
     } catch (error) {
       console.log("Error fetching Champions Play Rate: ", error);
     }
-  }
+  };
   const fetchLeagueEntry = async () => {
     try {
       const response = await axios.get(
@@ -170,12 +269,13 @@ export default function Summoner() {
           setLoading(true);
 
           // Fetch data sequentially
+          await fetchKDA();
+          await fetchMatchesDetails()
           await fetchChampionsPlayRate();
           await fetchChampionsMastery();
           await fetchLeagueEntry();
           await fetchGamesRatio();
           await fetchPositions();
-          await fetchKDA();
           await fetchKP();
 
           setLoading(false);
@@ -189,15 +289,23 @@ export default function Summoner() {
     }
   }, [summonerExists, navigate]);
 
-  const totalMasteryPoints = championsMastery ? championsMastery.reduce((acc, champ) => acc + champ.masteryLevel, 0) : 0;
-  const totalChampionPoints = 4317884; // Przykładowa liczba punktów
+  const totalMasteryPoints = championsMastery
+    ? championsMastery.reduce((acc, champ) => acc + champ.masteryLevel, 0)
+    : 0;
+  const totalChampionPoints = championsMastery
+    ? championsMastery.reduce((acc, champ) => acc + champ.points, 0)
+    : 0;
 
   // Render after data is fetched and loading is complete
   return loading ||
-    !summonerLeagueEntry ||
-    !championsPlayRate ||
-    !KDA ||
-    !killParticipation ? (
+  !summonerLeagueEntry ||
+  !championsPlayRate ||
+  !KDA ||
+  !killParticipation ||
+  !championsMastery ||
+  !gamesRatio ||
+  !positions ||
+  !matches ? (
     <div className={styles.loadingContainer}>
       <ClipLoader size={300} color={"#123abcd"} loading={loading} />
     </div>
@@ -225,6 +333,9 @@ export default function Summoner() {
         masteryPoints={totalChampionPoints}
         heroPoints={totalMasteryPoints}
         champions={championsMastery}
+      />
+      <MatchList 
+        matches={matches || []} 
       />
     </div>
   );
@@ -261,3 +372,14 @@ export const summonerLoader = async ({ params }) => {
     return false;
   }
 };
+
+// const champions = [
+//   { name: "JarvanIV", masteryLevel: 8, points: 357969 },
+//   { name: "Renekton", masteryLevel: 6, points: 541928 },
+//   { name: "Ezreal", masteryLevel: 6, points: 485273 },
+//   { name: "Tristana", masteryLevel: 5, points: 298737 },
+//   { name: "Kalista", masteryLevel: 5, points: 298026 },
+//   { name: "Yasuo", masteryLevel: 4, points: 271644 },
+// ];
+
+// const itemsAndRunes = [{ firstSpell: "Flash" }];

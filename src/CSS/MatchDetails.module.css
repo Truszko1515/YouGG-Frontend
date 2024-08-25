@@ -1,0 +1,127 @@
+.matchContainer {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .type {
+    font-weight: bold;
+  }
+  
+  .time {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .mainInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .resultSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .championInfo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .championIcon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .spellsAndRunes {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  
+  .spells,
+  .runes {
+    display: flex;
+    gap: 2px;
+  }
+  
+  .spellIcon,
+  .runeIcon {
+    width: 22px;
+    height: 22px;
+    background-color: rgba(0, 0, 0, 0.751);
+  }
+
+  .spellIcon,
+  .runeIconSecondary {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .kda {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .kdaRatio {
+    display: block;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .items {
+    display: flex;
+    align-items: center;
+  }
+  
+  .itemIcon {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+  }
+  
+  .stats {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .teamInfo {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .teamColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .player {
+    display: flex;
+    align-items: center;
+  }
+  
+  .playerIcon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .playerName {
+    font-size: 14px;
+    color: #666;
+  }
+  
