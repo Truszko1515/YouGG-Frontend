@@ -16,12 +16,12 @@ html, body, #root {
   padding: 0;
 }
 
-.body{
-  height: 100%;
-  margin: 0;
-  padding-top: 20px;
+body {
   font-family: "Poppins";
   background: var(--secondary);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .paragraph {
@@ -62,7 +62,8 @@ header nav a.active {
 main {
   max-width: 1200px;
   margin: 40px auto;
-  
+  background: var(--secondary); /* Dodanie tła do głównego kontenera */
+  flex: 1; /* Aby zajmować pozostałą przestrzeń */
 } 
 
 /* help layout */

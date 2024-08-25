@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../../../CSS/ChampionPoints.module.css";
+import styles from "../../../../CSS/ChampionMastery.module.css";
 
 const ChampionMastery = ({ masteryPoints, heroPoints, champions }) => {
   return (

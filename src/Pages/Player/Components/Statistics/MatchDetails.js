@@ -6,15 +6,21 @@ const MatchDetails = ({ match }) => {
     return name.length > 8 ? `${name.slice(0, 8)}...` : name;
   };
 
+  const backgroundColor = match.result === "Zwycięstwo" ? "#B3CDFF" : "#FFBAC3";
+  const borderClass = match.result === "Zwycięstwo" ? styles.win : styles.loss;
+
   return (
-    <div className={styles.matchContainer}>
+    <div
+      className={`${styles.matchContainer} ${borderClass}`}
+      style={{ backgroundColor }}
+    >
       <div className={styles.header}>
         <span className={styles.type}>{match.type}</span>
         <span className={styles.time}>{match.timeAgo}</span>
       </div>
 
-      <div className={styles.mainInfo}>
-        <div className={styles.resultSection}>
+      <div className={styles.mainContent}>
+        <div className={styles.leftContent}>
           <div className={styles.championInfo}>
             <img
               src={`${process.env.REACT_APP_CHAMPION_ICON_PATH}${match.champion}.png`}
@@ -23,8 +29,6 @@ const MatchDetails = ({ match }) => {
             />
             <div className={styles.spellsAndRunes}>
               <div className={styles.spells}>
-                {console.log(`${process.env.REACT_APP_SUMMONER_SPELL_PATH}${match.spell1}`)}
-                {console.log(`${process.env.REACT_APP_SUMMONER_SPELL_PATH}${match.spell2}`)}
                 <img
                   src={`${process.env.REACT_APP_SUMMONER_SPELL_PATH}${match.spell1}`}
                   alt="Spell 1"
