@@ -352,13 +352,14 @@ export const summonerLoader = async ({ params }) => {
   const { summonerName, tag } = params; // Adjust this based on your URL structure
   let fullName = summonerName;
 
+
   // If the tag exists, append it to the summonerName
   if (tag) {
     fullName += `%23${tag}`;
   }
 
   const token = JSON.parse(localStorage.getItem("user"))?.token;
-
+  console.log(`https://localhost:7041/api/summoner/info/${fullName}`);
   // Send the GET request with the full summoner name including the tag (if present)
   try {
     const response = await axios.get(

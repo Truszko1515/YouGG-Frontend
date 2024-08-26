@@ -15,11 +15,14 @@ const MatchDetails = ({ match }) => {
   };
 
   const handlePlayerClick = (name, tagLine) => {
-    const url = `/summoner/${name}/${tagLine}`;
-    navigate(url);
-    setTimeout(() => {
-      window.location.reload();
-    }, 1150);
+    console.log(name);
+    // let urlName = name.replace(" ", "%20");
+    // console.log(`/summoner/${urlName}/${tagLine}`)
+     const url = `/summoner/${name}/${tagLine}`;
+     navigate(url);
+     setTimeout(() => {
+        window.location.reload();
+     }, 1150);
     
   };
 
