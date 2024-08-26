@@ -1,14 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../../../../CSS/MatchDetails.module.css";
 
 const MatchDetails = ({ match }) => {
+  const [tooltip, setTooltip] = useState(null);
+  const navigate = useNavigate();
+
+  const handleMouseEnter = (fullName) => {
+    setTooltip(fullName);
+  };
+
+  const handleMouseLeave = () => {
+    setTooltip(null);
+  };
+
+  const handlePlayerClick = (name, tagLine) => {
+    const url = `/summoner/${name}/${tagLine}`;
+    navigate(url);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1150);
+    
+  };
+
   const truncatePlayerName = (name) => {
     return name.length > 8 ? `${name.slice(0, 8)}...` : name;
   };
 
-  const backgroundColor = match.result === "Zwycięstwo" ? "#D5E3FF" : "#FFD8D9";
+  const backgroundColor = match.result === "Zwycięstwo" ? "#B3CDFF" : "#FFBAC3";
   const borderClass = match.result === "Zwycięstwo" ? styles.win : styles.loss;
-  const typeClass = match.result === "Zwycięstwo" ? styles.typeWin : styles.typeLoss;
 
   const items = [...match.items];
   while (items.length < 7) {
@@ -21,7 +41,7 @@ const MatchDetails = ({ match }) => {
       style={{ backgroundColor }}
     >
       <div className={styles.leftSection}>
-        <div className={`${styles.type} ${typeClass}`}>{match.type}</div>
+        <div className={styles.type}>{match.type}</div>
         <div className={styles.timeAgo}>{match.timeAgo}</div>
         <hr className={styles.divider} />
         <div className={styles.result}>{match.result}</div>
@@ -92,7 +112,14 @@ const MatchDetails = ({ match }) => {
         <div className={styles.teamInfo}>
           <div className={styles.teamColumn}>
             {match.team.map((player, index) => (
-              <div key={index} className={styles.player}>
+              <div
+                key={index}
+                className={styles.player}
+                onMouseEnter={() => handleMouseEnter(player.fullName)}
+                onMouseLeave={handleMouseLeave}
+                onClick={() => handlePlayerClick(player.name, player.tagLine)}
+                style={{ cursor: 'pointer' }} // Change cursor on hover
+              >
                 <img
                   src={`${process.env.REACT_APP_CHAMPION_ICON_PATH}${player.champion}.png`}
                   alt={player.name}
@@ -101,12 +128,22 @@ const MatchDetails = ({ match }) => {
                 <span className={styles.playerName}>
                   {truncatePlayerName(player.name)}
                 </span>
+                {tooltip === player.fullName && (
+                  <div className={styles.tooltip}>{player.fullName}</div>
+                )}
               </div>
             ))}
           </div>
           <div className={styles.teamColumn}>
             {match.opponents.map((player, index) => (
-              <div key={index} className={styles.player}>
+              <div
+                key={index}
+                className={styles.player}
+                onMouseEnter={() => handleMouseEnter(player.fullName)}
+                onMouseLeave={handleMouseLeave}
+                onClick={() => handlePlayerClick(player.name, player.tagLine)}
+                style={{ cursor: 'pointer' }} // Change cursor on hover
+              >
                 <img
                   src={`${process.env.REACT_APP_CHAMPION_ICON_PATH}${player.champion}.png`}
                   alt={player.name}
@@ -115,6 +152,9 @@ const MatchDetails = ({ match }) => {
                 <span className={styles.playerName}>
                   {truncatePlayerName(player.name)}
                 </span>
+                {tooltip === player.fullName && (
+                  <div className={styles.tooltip}>{player.fullName}</div>
+                )}
               </div>
             ))}
           </div>

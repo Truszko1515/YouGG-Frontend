@@ -189,3 +189,42 @@
   color: #666;
   white-space: nowrap; /* Zapobiega zawijaniu tekstu */
 }
+
+
+/* Komunikat dla danego gracza */
+.player {
+  position: relative;
+  cursor: pointer; /* Dodanie kursora wskaźnika dla całego elementu */
+}
+
+.playerName {
+  font-size: 12px;
+  color: #666;
+  white-space: nowrap;
+  cursor: pointer; /* Dodanie kursora wskaźnika dla nazwy gracza */
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 12px;
+  z-index: 10;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
+}
