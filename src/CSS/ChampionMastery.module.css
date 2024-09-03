@@ -104,7 +104,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 50px; /* Wysokość linii */
-  width: 2px; /* Grubość linii */
-  background-color: #920a0a; /* Kolor linii */
+  height: 50px; 
+  width: 2px; 
+  background-color: #920a0a; 
 }

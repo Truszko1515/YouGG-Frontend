@@ -12,6 +12,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("string");
   const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
+  const [summonerName, setSummonerName] = useState("Joohn Senna #EUWn");
 
   const [loginError, setLoginError] = useState(null);
   const [registerError, setRegisterError] = useState(null);
@@ -34,8 +35,11 @@ const LoginForm = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    localStorage.setItem("LoggedSummonerName", summonerName);
+    console.log(summonerName);
     try 
     {
+      localStorage.setItem("LoggedSummonerName", summonerName);
       const response = await axios.post('https://localhost:7041/api/Auth/login', { email, password });
       //console.log(typeof response.data)
       login(response.data); // Store user data
@@ -100,13 +104,9 @@ const LoginForm = () => {
                 <input type="password" placeholder="Password" required value={password} onChange={(e) => setPassword(e.target.value)} />
                 <FaLock className="icon" />
               </div>
-
-              <div className="remember-forgot">
-                <label>
-                  <input type="checkbox" />
-                  Remember me
-                </label>
-                <a href="#">Forgot Password?</a>
+              <div className="input-box" >
+                <input type="text" placeholder="Summoner Name... " required value={summonerName} onChange={(e) => setSummonerName(e.target.value)} />
+                <FaLock className="icon" />
               </div>
 
               <button type="submit">Login</button>
@@ -138,11 +138,11 @@ const LoginForm = () => {
                 <FaLock className="icon" />
               </div>
 
-              <div className="remember-forgot">
+              {/* <div className="remember-forgot">
                 <label>
                   <input type="checkbox" />I agree to the terms & conditions
                 </label>
-              </div>
+              </div> */}
 
               {<p className="register-error">{registerError}</p>} {/* Display registration error message */}
 

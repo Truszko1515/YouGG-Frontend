@@ -13,7 +13,7 @@ export default function Summoner() {
   const SummonerInfo = useLoaderData();
   const [summonerExists, setSummonerExists] = useState(SummonerInfo);
   const [loading, setLoading] = useState(true);
-  const token = JSON.parse(localStorage.getItem("user"))?.token;
+  const token = localStorage.getItem("user");
   const [fullName, setFullName] = useState(
     summonerName + (tag ? `%23${tag}` : "")
   );
@@ -26,106 +26,7 @@ export default function Summoner() {
   const [championsMastery, setChampionsMastery] = useState(null);
   const [matches, setMatches] = useState(null);
 
-  const matchesDetails = [
-    {
-      type: "Ranked Solo",
-      timeAgo: "1 dzień temu",
-      champion: "Aatrox",
-      kills: 4,
-      deaths: 3,
-      assists: 4,
-      kdaRatio: 2.67,
-      items: ["item1", "item2", "item3", "item4"],
-      lanePhase: "Faza laningu 47:53",
-      spell1: "SummonerFlash.png",
-      spell2: "SummonerTeleport.png",
-      runePrimary: "perk-images/Styles/Precision/Conqueror/Conqueror.png",
-      runeSecondar: "perk-images/Styles/7203_Whimsy.png",
-      cs: "CS 198 (8.4)",
-      result: "Zwycięstwo",
-      additionalInfo: "Odporność",
-      team: [
-        { name: "Pantless", champion: "Yasuo", fullName: " Test #EUW" },
-        { name: "letmechaos", champion: "Zed", fullName: " Test #EUW" },
-        { name: "Blütenduft", champion: "Ahri", fullName: " Test #EUW" },
-        { name: "Flakkardo", champion: "Ashe", fullName: " Test #EUW" },
-        { name: "Yuank Le", champion: "Leona", fullName: " Test #EUW" },
-      ],
-      opponents: [
-        { name: "tukaan", champion: "Akali", fullName: " Test #EUW" },
-        { name: "NGX Slayer", champion: "Diana", fullName: " Test #EUW" },
-        { name: "Samsara", champion: "Lux", fullName: " Test #EUW" },
-        { name: "ROI DES", champion: "Ezreal", fullName: " Test #EUW" },
-        { name: "Desmond", champion: "Thresh", fullName: " Test #EUW" },
-      ],
-    },
-    {
-      type: "Ranked Solo",
-      timeAgo: "2 dni temu",
-      champion: "Khazix",
-      kills: 10,
-      deaths: 2,
-      assists: 4,
-      kdaRatio: 7,
-      items: ["item1", "item2", "item3", "item4"],
-      lanePhase: "Faza laningu 10:53",
-      spell1: "SummonerFlash.png",
-      spell2: "SummonerTeleport.png",
-      runePrimary: "perk-images/Styles/Precision/Conqueror/Conqueror.png",
-      runeSecondar: "perk-images/Styles/7203_Whimsy.png",
-      cs: "CS 225 (10.4)",
-      result: "Zwycięstwo",
-      additionalInfo: "Odporność",
-      team: [
-        { name: "Pantless", champion: "Yasuo", fullName: " Test #EUW" },
-        { name: "letmechaos", champion: "Zed", fullName: " Test #EUW" },
-        { name: "Blütenduft", champion: "Ahri", fullName: " Test #EUW" },
-        { name: "Flakkardo", champion: "Ashe", fullName: " Test #EUW" },
-        { name: "Yuank Le", champion: "Leona", fullName: " Test #EUW" },
-      ],
-      opponents: [
-        { name: "tukaan", champion: "Akali", fullName: " Test #EUW" },
-        { name: "NGX Slayer", champion: "Diana", fullName: " Test #EUW" },
-        { name: "Samsara", champion: "Lux", fullName: " Test #EUW" },
-        { name: "ROI DES", champion: "Ezreal", fullName: " Test #EUW" },
-        { name: "Desmond", champion: "Thresh", fullName: " Test #EUW" },
-      ],
-    },
-    {
-      type: "Ranked Solo",
-      timeAgo: "2 dni temu",
-      champion: "Nami",
-      kills: 1,
-      deaths: 4,
-      assists: 23,
-      kdaRatio: 7,
-      items: ["item1", "item2", "item3", "item4"],
-      lanePhase: "Faza laningu 15:13",
-      spell1: "SummonerFlash.png",
-      spell2: "SummonerTeleport.png",
-      runePrimary: "perk-images/Styles/Precision/Conqueror/Conqueror.png",
-      runeSecondar: "perk-images/Styles/7203_Whimsy.png",
-      cs: "CS 227 (1.2)",
-      result: "Zwycięstwo",
-      additionalInfo: "Odporność",
-      team: [
-        { name: "Pantlesssssssssssss", champion: "Yasuo", fullName: " Test #EUW" },
-        { name: "letmechaos", champion: "Zed", fullName: " Test #EUW" },
-        { name: "Blütenduft", champion: "Ahri", fullName: " Test #EUW" },
-        { name: "Flakkardo", champion: "Ashe", fullName: " Test #EUW" },
-        { name: "Yuank Le", champion: "Leona", fullName: " Test #EUW" },
-      ],
-      opponents: [
-        { name: "tukaan", champion: "Akali", fullName: " Test #EUW" },
-        { name: "NGX Slayer", champion: "Diana", fullName: " Test #EUW" },
-        { name: "Samsara", champion: "Lux", fullName: " Test #EUW" },
-        { name: "ROI DES", champion: "Ezreal", fullName: " Test #EUW" },
-        { name: "Desmond", champion: "Thresh", fullName: " Test #EUW" },
-      ],
-    },
-    // kolejne mecze...
-  ];
-
+  
   const fetchMatchesDetails = async () => {
     try {
       const response = await axios.get(
@@ -262,6 +163,9 @@ export default function Summoner() {
       console.log("Error fetching Kill Participation: ", error);
     }
   };
+  const TrySaveDataToDB = async () => {
+    
+  };
 
   useEffect(() => {
     if (!summonerExists) {
@@ -275,8 +179,6 @@ export default function Summoner() {
       const fetchData = async () => {
         try {
           setLoading(true);
-
-          // Fetch data sequentially
           await fetchKDA();
           await fetchMatchesDetails()
           await fetchChampionsPlayRate();
@@ -286,6 +188,7 @@ export default function Summoner() {
           await fetchPositions();
           await fetchKP();
 
+          await TrySaveDataToDB();
           setLoading(false);
         } catch (error) {
           console.error("Error fetching data:", error);
@@ -358,8 +261,10 @@ export const summonerLoader = async ({ params }) => {
     fullName += `%23${tag}`;
   }
 
-  const token = JSON.parse(localStorage.getItem("user"))?.token;
+  const token = localStorage.getItem("user");
+  console.log(token)
   console.log(`https://localhost:7041/api/summoner/info/${fullName}`);
+  console.log(`https://localhost:7041/api/summoner/info/${localStorage.getItem("LoggedSummonerName")}`);
   // Send the GET request with the full summoner name including the tag (if present)
   try {
     const response = await axios.get(
@@ -389,6 +294,107 @@ export const summonerLoader = async ({ params }) => {
 //   { name: "Tristana", masteryLevel: 5, points: 298737 },
 //   { name: "Kalista", masteryLevel: 5, points: 298026 },
 //   { name: "Yasuo", masteryLevel: 4, points: 271644 },
+// ];
+
+
+// const matchesDetails = [
+//   {
+//     type: "Ranked Solo",
+//     timeAgo: "1 dzień temu",
+//     champion: "Aatrox",
+//     kills: 4,
+//     deaths: 3,
+//     assists: 4,
+//     kdaRatio: 2.67,
+//     items: ["item1", "item2", "item3", "item4"],
+//     lanePhase: "Faza laningu 47:53",
+//     spell1: "SummonerFlash.png",
+//     spell2: "SummonerTeleport.png",
+//     runePrimary: "perk-images/Styles/Precision/Conqueror/Conqueror.png",
+//     runeSecondar: "perk-images/Styles/7203_Whimsy.png",
+//     cs: "CS 198 (8.4)",
+//     result: "Zwycięstwo",
+//     additionalInfo: "Odporność",
+//     team: [
+//       { name: "Pantless", champion: "Yasuo", fullName: " Test #EUW" },
+//       { name: "letmechaos", champion: "Zed", fullName: " Test #EUW" },
+//       { name: "Blütenduft", champion: "Ahri", fullName: " Test #EUW" },
+//       { name: "Flakkardo", champion: "Ashe", fullName: " Test #EUW" },
+//       { name: "Yuank Le", champion: "Leona", fullName: " Test #EUW" },
+//     ],
+//     opponents: [
+//       { name: "tukaan", champion: "Akali", fullName: " Test #EUW" },
+//       { name: "NGX Slayer", champion: "Diana", fullName: " Test #EUW" },
+//       { name: "Samsara", champion: "Lux", fullName: " Test #EUW" },
+//       { name: "ROI DES", champion: "Ezreal", fullName: " Test #EUW" },
+//       { name: "Desmond", champion: "Thresh", fullName: " Test #EUW" },
+//     ],
+//   },
+//   {
+//     type: "Ranked Solo",
+//     timeAgo: "2 dni temu",
+//     champion: "Khazix",
+//     kills: 10,
+//     deaths: 2,
+//     assists: 4,
+//     kdaRatio: 7,
+//     items: ["item1", "item2", "item3", "item4"],
+//     lanePhase: "Faza laningu 10:53",
+//     spell1: "SummonerFlash.png",
+//     spell2: "SummonerTeleport.png",
+//     runePrimary: "perk-images/Styles/Precision/Conqueror/Conqueror.png",
+//     runeSecondar: "perk-images/Styles/7203_Whimsy.png",
+//     cs: "CS 225 (10.4)",
+//     result: "Zwycięstwo",
+//     additionalInfo: "Odporność",
+//     team: [
+//       { name: "Pantless", champion: "Yasuo", fullName: " Test #EUW" },
+//       { name: "letmechaos", champion: "Zed", fullName: " Test #EUW" },
+//       { name: "Blütenduft", champion: "Ahri", fullName: " Test #EUW" },
+//       { name: "Flakkardo", champion: "Ashe", fullName: " Test #EUW" },
+//       { name: "Yuank Le", champion: "Leona", fullName: " Test #EUW" },
+//     ],
+//     opponents: [
+//       { name: "tukaan", champion: "Akali", fullName: " Test #EUW" },
+//       { name: "NGX Slayer", champion: "Diana", fullName: " Test #EUW" },
+//       { name: "Samsara", champion: "Lux", fullName: " Test #EUW" },
+//       { name: "ROI DES", champion: "Ezreal", fullName: " Test #EUW" },
+//       { name: "Desmond", champion: "Thresh", fullName: " Test #EUW" },
+//     ],
+//   },
+//   {
+//     type: "Ranked Solo",
+//     timeAgo: "2 dni temu",
+//     champion: "Nami",
+//     kills: 1,
+//     deaths: 4,
+//     assists: 23,
+//     kdaRatio: 7,
+//     items: ["item1", "item2", "item3", "item4"],
+//     lanePhase: "Faza laningu 15:13",
+//     spell1: "SummonerFlash.png",
+//     spell2: "SummonerTeleport.png",
+//     runePrimary: "perk-images/Styles/Precision/Conqueror/Conqueror.png",
+//     runeSecondar: "perk-images/Styles/7203_Whimsy.png",
+//     cs: "CS 227 (1.2)",
+//     result: "Zwycięstwo",
+//     additionalInfo: "Odporność",
+//     team: [
+//       { name: "Pantlesssssssssssss", champion: "Yasuo", fullName: " Test #EUW" },
+//       { name: "letmechaos", champion: "Zed", fullName: " Test #EUW" },
+//       { name: "Blütenduft", champion: "Ahri", fullName: " Test #EUW" },
+//       { name: "Flakkardo", champion: "Ashe", fullName: " Test #EUW" },
+//       { name: "Yuank Le", champion: "Leona", fullName: " Test #EUW" },
+//     ],
+//     opponents: [
+//       { name: "tukaan", champion: "Akali", fullName: " Test #EUW" },
+//       { name: "NGX Slayer", champion: "Diana", fullName: " Test #EUW" },
+//       { name: "Samsara", champion: "Lux", fullName: " Test #EUW" },
+//       { name: "ROI DES", champion: "Ezreal", fullName: " Test #EUW" },
+//       { name: "Desmond", champion: "Thresh", fullName: " Test #EUW" },
+//     ],
+//   },
+//   // kolejne mecze...
 // ];
 
 // const itemsAndRunes = [{ firstSpell: "Flash" }];

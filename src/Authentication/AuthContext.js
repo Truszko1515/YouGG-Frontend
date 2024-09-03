@@ -32,7 +32,11 @@ export const AuthProvider = ({ children }) => {
 
     const newUsers = [...users, user];
     sessionStorage.setItem('users', JSON.stringify(newUsers));
-    localStorage.setItem("users", JSON.stringify(newUsers)); // test
+    localStorage.setItem("users", JSON.stringify(newUsers)); // setting users
+
+    sessionStorage.setItem('user', token);
+    localStorage.setItem('user', token);
+
     setUsers(newUsers);
     setActiveUserIndex(newUsers.length - 1); // Set the new user as active
     setLogoutTimer((decodedToken.exp * 1000) - Date.now(), newUsers.length - 1);
