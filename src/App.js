@@ -13,6 +13,7 @@ import Contact from "./Pages/Home/Contact";
 import NotFound from "./Pages/Error/NotFound";
 import Summoner, { summonerLoader } from "./Pages/Player/Components/Profile/Summoner.js";
 import LoginForm from "./Pages/Login/LoginForm/LoginForm";
+import ChampionStats from "./Pages/GlobalStats/ChampionStats.js";
 
 // layouts
 import RootLayout from "./Layouts/RootLayout";
@@ -35,6 +36,8 @@ const router = createBrowserRouter(
             <Route path="faq" element={<Faq />} />
             <Route path="contact" element={<Contact />} />
           </Route>
+
+          <Route path="statistics/global" element={<ChampionStats />} />
 
           <Route path="summoner/:summonerName/:tag?" element={<Summoner />} loader={summonerLoader} />
 

@@ -21,6 +21,19 @@
   font-family: "Poppins";
 }
 
+.bgImage {
+  background-image: url('../../public//Assets/bgImage.png'); /* Ścieżka do obrazu w folderze public */
+  background-size: cover; /* Dopasowanie obrazu do rozmiaru kontenera */
+  background-position: center; /* Ustawienie obrazu na środku */
+  height: 100vh; /* Wysokość na pełen ekran */
+  width: 100vw; /* Szerokość na cały ekran */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 /* .headerNav {
   display: flex;
   gap: 16px;

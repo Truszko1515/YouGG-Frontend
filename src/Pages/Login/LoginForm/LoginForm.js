@@ -12,7 +12,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("string");
   const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
-  const [summonerName, setSummonerName] = useState("Joohn Senna #EUWn");
+  const [summonerName, setSummonerName] = useState("Joohn Senna #EUW");
 
   const [loginError, setLoginError] = useState(null);
   const [registerError, setRegisterError] = useState(null);

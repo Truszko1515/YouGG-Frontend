@@ -1,0 +1,147 @@
+.popupContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Przezroczyste tło za popupem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .popup {
+    background-color: rgb(136, 199, 125); /* Kolor tła */
+    padding: 50px; /* Duży padding */
+    border-radius: 10px;
+    max-width: 90vw; /* Popup może zajmować 90% szerokości ekranu */
+    width: 82vw; /* Ustawienie szerokości na 75% */
+    height: 90vh; /* Popup może zajmować 75% wysokości ekranu */
+    overflow-y: auto; /* Scroll dla dużych treści */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Większy cień */
+    position: relative;
+    color: black; /* Czarny kolor czcionki */
+    font-size: 1.2rem; /* Większy rozmiar czcionki */
+  }
+  
+  /* Close Button */
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    color: white;
+  }
+  
+  .statsAndFilters {
+    display: flex;
+    justify-content: space-between; /* Oddziela statystyki i filtry */
+    gap: 20px; /* Dodatkowy odstęp między statystykami a filtrami */
+    max-height: 70vh; /* Ograniczenie wysokości sekcji z treściami */
+  }
+  
+  /* Lewa strona - Statystyki */
+  .statsGrid {
+    flex: 2; /* Statystyki zajmują więcej miejsca */
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Zmniejszony odstęp między statystykami */
+  }
+  
+  .statBox {
+    background-color: #f3f1f1; /* Tło dla każdej statystyki */
+    border: 2px solid black; /* Czarna ramka */
+    border-radius: 5px; /* Zaokrąglone rogi */
+    padding: 10px; /* Zmniejszony padding dla statystyki */
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem; /* Zmniejszony rozmiar czcionki */
+    width: 100%; /* Statystyki zajmują całą szerokość */
+  }
+  
+  .statBox span {
+    color: black; /* Kolor tekstu */
+    font-size: large;
+  }
+
+
+  .statIcon {
+    width: 30px; /* Zmniejszone ikonki */
+    height: 30px;
+    margin-right: 10px;
+    object-fit: contain;
+  }
+  
+  /* Prawa strona - Filtry */
+  .filtersContainer {
+    flex: 1; /* Filtry zajmują mniejszą szerokość */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Ustawia filtry na górze */
+    padding-left: 20px;
+  }
+  
+  .matchesCount {
+    text-align: right; /* Licznik meczów wyrównany do prawej */
+    margin-bottom: 10px;
+  }
+  
+  .matchesCount strong {
+    font-size: larger;
+  }
+  
+  .matchesWithFilters {
+    margin-top: 5px;
+    color: #333;
+  }
+  
+  .matchesWithFilters strong {
+    font-size: larger;
+  }
+  
+  .appliedFilters {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .appliedFilters h3 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .filterBox {
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px; /* Odstęp między filtrami */
+    color: black;
+  }
+  
+  .filterBox strong {
+    color: black;
+  }
+  
+  /* Separator między sekcjami */
+  .separatorLine {
+    border: none;
+    border-top: 2px solid #ccc; /* Cienka linia w subtelnym szarym kolorze */
+    margin: 10px 0; /* Odstęp nad i pod linią */
+    width: 100%; /* Linia zajmuje całą szerokość elementu */
+  }
+
+  .coloredText {
+    color: #ea360d; /* Zastąp ten kolor dowolnym innym */
+    font-weight: bold; /* Opcjonalnie dodaj pogrubienie, jeśli chcesz */
+  }
+  

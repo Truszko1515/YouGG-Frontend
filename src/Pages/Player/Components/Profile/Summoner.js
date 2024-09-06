@@ -164,7 +164,19 @@ export default function Summoner() {
     }
   };
   const TrySaveDataToDB = async () => {
-    
+    try {
+      const response = await axios.get(
+        `https://localhost:7041/api/GlobalData/Insert/ChampionData/${fullName}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log("Dodawanie do bazy statystyk bohaterów NIE POWIODŁO SIĘ");
+    }
   };
 
   useEffect(() => {
@@ -188,7 +200,7 @@ export default function Summoner() {
           await fetchPositions();
           await fetchKP();
 
-          await TrySaveDataToDB();
+          TrySaveDataToDB();
           setLoading(false);
         } catch (error) {
           console.error("Error fetching data:", error);

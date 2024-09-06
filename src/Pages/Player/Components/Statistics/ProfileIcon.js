@@ -60,7 +60,7 @@ export default function ProfileIcon({
     datasets: [
       {
         label: "Procent wygranych",
-        data: [winRate, 100 - winRate],
+        data: [gamesRatio.wins, gamesRatio.losses],
         backgroundColor: ["#36A2EB", "#FF6384"],
         hoverBackgroundColor: ["#36A2EB", "#FF6384"],
         borderWidth: 1,
@@ -71,14 +71,14 @@ export default function ProfileIcon({
     labels: positions.map((pos) => pos.roleInGame),
     datasets: [
       {
-        label: "Preferowana Pozycja (Ranking)",
+        label: "Preferowana Pozycja (%)",
         data: positions.map((pos) => pos.percentage),
         backgroundColor: "#1a73e8",
       },
     ],
   };
   const doughnutOptions = {
-    cutout: "70%", // Adjust the cutout percentage if needed
+    cutout: "50%", // Adjust the cutout percentage if needed
     responsive: true,
     maintainAspectRatio: false,
   };
