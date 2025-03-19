@@ -1,4 +1,5 @@
 # YouGG app for analyzing League of Legends players accounts
+
 ##
 It is a Full-Stack Web application designed for League of Legends players to analyse their performance in recent matches. Application key features include searching any existing European account and track its performance as well as collecting data like global win rate on particular champions.  To retrieve specific player statistics, the application uses the game creators (Riot Games company) API. 
 
